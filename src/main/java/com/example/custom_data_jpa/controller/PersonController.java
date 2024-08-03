@@ -13,16 +13,30 @@ import java.util.List;
 public class PersonController {
 
     @Autowired
-    PersonServiceImpl personService;
+    PersonServiceImpl personServiceImpl;
 
     @PostMapping("/addPerson")
     public Person savePerson(@RequestBody Person person) {
-        return personService.savePerson(person);
+        return personServiceImpl.savePerson(person);
     }
 
     @GetMapping("/getAllPersonByFirstName")
     public List<Person> getAllPersonByFirstName( @RequestParam String firstName) {
-        return personService.getAllPersonByFirstName(firstName);
+        return personServiceImpl.getAllPersonByFirstName(firstName);
+    }
+    @GetMapping("/getAllPersonByFirstNameAndLastName")
+    public List<Person> getAllPersonByFirstNameAndLastName( @RequestParam String firstName, @RequestParam String lastName) {
+        return personServiceImpl.findByFirstNameAndLastName(firstName,lastName);
+    }
+
+    @GetMapping("/allPerson")
+    public List<Person> getAllPerson() {
+        return personServiceImpl.findAllPerson();
+    }
+
+    @DeleteMapping("/deletedById/{id}")
+    public void deletePersonById(@PathVariable Long id) {
+        personServiceImpl.deletePersonById(id);
     }
 
 }

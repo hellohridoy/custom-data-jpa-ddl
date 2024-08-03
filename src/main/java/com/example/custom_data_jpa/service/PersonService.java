@@ -6,7 +6,8 @@ import java.util.List;
 
 public interface PersonService {
    List<Person>getAllPersonByFirstName(String firstName);
-   List<Person> getAllPersonEntityByFirstName(String firstName);
-   List<Person>findByFirstNameAndLastName(String firstName, String lastName, List<Person> personList);
+   List<Person>findByFirstNameAndLastName(String firstName, String lastName);
    List<Person>findAllPersonByPhoneNumber(String phone);
+   List<Person>findAllPerson();
+   void deletePersonById(Long id);
 }

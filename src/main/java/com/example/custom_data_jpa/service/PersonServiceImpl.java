@@ -24,18 +24,25 @@ public class PersonServiceImpl implements PersonService{
         return personRepository.getAllPersonByFirstName(firstName);
     }
 
-    @Override
-    public List<Person> getAllPersonEntityByFirstName(String firstName) {
-        return List.of();
-    }
+
 
     @Override
-    public List<Person> findByFirstNameAndLastName(String firstName, String lastName, List<Person> personList) {
-        return List.of();
+    public List<Person> findByFirstNameAndLastName(String firstName, String lastName) {
+        return personRepository.findByFirstNameAndLastName(firstName, lastName);
     }
 
     @Override
     public List<Person> findAllPersonByPhoneNumber(String phone) {
         return List.of();
+    }
+
+    @Override
+    public List<Person> findAllPerson() {
+        return personRepository.findAll();
+    }
+
+    @Override
+    public void deletePersonById(Long id) {
+         personRepository.deleteById(id);
     }
 }
